@@ -49,7 +49,7 @@ public class ManejadorBd {
     }
     
     
-       public boolean validar(String user, String password)
+    public boolean validar(String user, String password)
             throws SQLException {
            
        try {
@@ -240,5 +240,39 @@ public class ManejadorBd {
         
         
     }
-        
+       
+      
+   public List<Presupuesto> buscarPresupuesto(String codCli) {
+        List<Presupuesto> listadoPresupuesto;
+        try {
+            Query q;
+            
+                q = em.createNamedQuery("Presupuesto.findByCodCliente");
+                q.setParameter("codCliente","'"+ codCli+"%'");
+            
+            listadoPresupuesto = q.getResultList();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return null;
+        }
+        return listadoPresupuesto;
+    }   
+   
+      public List<Presupuesto> buscarPresupuestoConcept( codCli) {
+        List<Presupuesto> listadoPresupuesto;
+        try {
+            Query q;
+            
+                q = em.createNamedQuery("Presupuesto.findByCodCliente");
+                q.setParameter("codCliente","'"+ codCli+"%'");
+            
+            listadoPresupuesto = q.getResultList();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return null;
+        }
+        return listadoPresupuesto;
+    }  
+   
+   
 }
