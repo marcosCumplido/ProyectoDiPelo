@@ -6,6 +6,8 @@
 package dao;
 
 import beans.Cliente;
+import beans.Factura;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 import javax.persistence.EntityExistsException;
@@ -15,11 +17,15 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 
+
 /**
  *
  * @author Alumno
  */
 public class ManejadorBd {
+    private final String bajaCp = "B";
+    private final int bajaCli = 0;
+    
 
     private EntityManager em;
     private EntityManagerFactory emf;
@@ -34,7 +40,7 @@ public class ManejadorBd {
         
     }
     
-    
+//Valida-Usuario Ini    
     public int altaUsuario(Usuarios u){
         try {
             em.getTransaction().begin();
@@ -56,29 +62,35 @@ public class ManejadorBd {
        Usuarios u;
        Query q = null;
        q = em.createNamedQuery("Usuarios.findByUsuario"); 
-        u=(Usuarios) q.getSingleResult();
+       u=(Usuarios) q.getSingleResult();
         if (u.getPaswword().equals(password)){
-            return true;
+            
+//            if(u.getEstado().equals("A"))
+//            return true;
+            
+        return false;
         }        
-    } catch (Exception e) {
+    } catch (Exception ex) {
         return false;
           
     }
        return false;
                     
 }  
-       //   
+//Valida-Usuario Fin
+    
+//Cliente-Ini Alta - Buscar -Actualizar - Baja     
 
     public int grabarCliente(Cliente c) {
-//        try {
+       try {
             em.getTransaction().begin();
             em.persist(c);
             em.getTransaction().commit();           
-//        } catch (EntityExistsException ex) {
-//            System.out.println(ex.getMessage());
-//            return Controlador.ERROR_CLAVE;
-//        }
-//        return Controlador.SIN_ERROR;
+        } catch (EntityExistsException ex) {
+            System.out.println(ex.getMessage());
+            return -1;
+        }
+        
         return 0;
     }
 
@@ -122,11 +134,12 @@ public class ManejadorBd {
         }
     }
     
-        public int borrarCliente(String dni) {
+        public int bajaCliente(String dni) {
         try {
             em.getTransaction().begin();
             Cliente c = em.find(Cliente.class, dni);
-            em.remove(c);
+            c.setEstado(bajaCli);
+//            em.remove(c);
             em.getTransaction().commit();
             return 0;
         } catch (Exception ex) {
@@ -136,16 +149,19 @@ public class ManejadorBd {
 
     }
 
+//Cliente-Fin Alta - Buscar -Actualizar - Baja  
+        
+//Impuesto-Ini Alta - Actualizar - Borrar        
+        
        public int altaImpuesto(Impuesto i){
-         //        try {
+        try {
             em.getTransaction().begin();
             em.persist(i);
             em.getTransaction().commit();           
-//        } catch (EntityExistsException ex) {
-//            System.out.println(ex.getMessage());
-//            return Controlador.ERROR_CLAVE;
-//        }
-//        return Controlador.SIN_ERROR;
+        } catch (EntityExistsException ex) {
+            System.out.println(ex.getMessage());
+            return -1;
+        }
         return 0;  
            
        } 
@@ -158,11 +174,12 @@ public class ManejadorBd {
             impuestoOld.setValorIva(i.getValorIva());
             impuestoOld.setDescripcion(i.getDescripcion());                        
             em.getTransaction().commit();
-            return 0;
+            
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             return -1;
-        } 
+        }
+        return 0;
            
        }
        
@@ -179,17 +196,19 @@ public class ManejadorBd {
         }
 
     }
-        
+
+//Impuesto-Fin Alta - Actualizar - Borrar          
+
+//Conceptos-Ini Alta - Actualizar - Baja        
         public int altaConceptos(Conceptos cp){
-//        try {
+        try {
             em.getTransaction().begin();
             em.persist(cp);
             em.getTransaction().commit();           
-//        } catch (EntityExistsException ex) {
-//            System.out.println(ex.getMessage());
-//            return Controlador.ERROR_CLAVE;
-//        }
-//        return Controlador.SIN_ERROR;
+        } catch (EntityExistsException ex) {
+            System.out.println(ex.getMessage());
+            return -1;
+        }
         return 0;   
             
         }
@@ -213,11 +232,12 @@ public class ManejadorBd {
            
        }
  
-        public int borrarConceptos(int codCp) {
+        public int bajaConceptos(int codCp) {
         try {
             em.getTransaction().begin();
             Conceptos cp = em.find(Conceptos.class,codCp);
-            em.remove(cp);
+            cp.setEstado(bajaCp);
+//            em.remove(cp);
             em.getTransaction().commit();
             return 0;
         } catch (Exception ex) {
@@ -226,29 +246,31 @@ public class ManejadorBd {
         }
 
     }
+
+//Conceptos-Fin Alta - Actualizar - Baja
+
+//Presupuestos-Ini Alta -Buscar(codCli,codPresupuesto,Fechas)  
         
         public int altaPresupuestos(Presupuesto pr){
                try {
-            em.getTransaction().begin();
+            em.getTransaction().begin();            
             em.persist(pr);
             em.getTransaction().commit();           
                } catch (EntityExistsException ex) {
             System.out.println(ex.getMessage());
             return -1;
         }       
-        return 0;   
-        
+        return 0;           
         
     }
-       
-      
-   public List<Presupuesto> buscarPresupuesto(String codCli) {
+             
+   public List<Presupuesto> buscarPresupuesto(int codCli) {
         List<Presupuesto> listadoPresupuesto;
         try {
             Query q;
             
                 q = em.createNamedQuery("Presupuesto.findByCodCliente");
-                q.setParameter("codCliente","'"+ codCli+"%'");
+                q.setParameter("codCliente",codCli);
             
             listadoPresupuesto = q.getResultList();
         } catch (Exception ex) {
@@ -258,14 +280,14 @@ public class ManejadorBd {
         return listadoPresupuesto;
     }   
    
-      public List<Presupuesto> buscarPresupuestoConcept( codCli) {
+      public List<Presupuesto> buscarPresupuestoConcept(int codPresupuesto ) {
         List<Presupuesto> listadoPresupuesto;
         try {
             Query q;
             
-                q = em.createNamedQuery("Presupuesto.findByCodCliente");
-                q.setParameter("codCliente","'"+ codCli+"%'");
-            
+                q = em.createNamedQuery("Presupuesto.findByCodPresupuesto");
+                q.setParameter("codPresupuesto",codPresupuesto);
+                
             listadoPresupuesto = q.getResultList();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -274,5 +296,70 @@ public class ManejadorBd {
         return listadoPresupuesto;
     }  
    
-   
+     public List<Presupuesto> buscarPresupuestoFechas(Date fechaIni,Date fechaFin) {
+        List<Presupuesto> listadoPresupuesto;
+        try {
+            Query q;
+            
+                q = em.createNamedQuery("Presupuesto.findByFechas");
+                q .setParameter("fechaIni",fechaIni);
+                q .setParameter("fechaIni",fechaFin);
+                
+            listadoPresupuesto = q.getResultList();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return null;
+        }
+        return listadoPresupuesto;
+    }  
+//Presupuestos-Fin Alta -Buscar(codCli,codPresupuesto,Fechas)
+
+//Factura-Ini  Alta - Buscar(codCli,codFactura,Fechas)   
+    public int altaFactura(Factura f){
+        try {
+            em.getTransaction().begin();            
+            em.persist(f);
+            em.getTransaction().commit();           
+        } catch (EntityExistsException ex) {
+            System.out.println(ex.getMessage());
+            return -1;
+        }       
+        return 0; 
+        
+    } 
+     
+    public List<Factura> buscarFactura(String codFac) {
+        List<Factura> listadoFacturas;
+        try {
+            Query q;
+            
+                q = em.createNamedQuery("Factura.findByCodFactura");
+                q.setParameter("codFactura",codFac);
+            
+            listadoFacturas = q.getResultList();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return null;
+        }
+        return listadoFacturas;
+    }   
+    
+    public List<Factura> buscarFacturaCli(int codCli) {
+        List<Factura> listadoFacturas;
+        try {
+            Query q;
+            
+                q = em.createNamedQuery("Factura.findByCodCliente");
+                q.setParameter("codCliente",codCli);
+            
+            listadoFacturas = q.getResultList();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return null;
+        }
+        return listadoFacturas;
+    }   
+    
+    
+//final     
 }

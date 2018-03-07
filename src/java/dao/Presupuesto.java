@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Presupuesto.findByCodPresupuesto", query = "SELECT p FROM Presupuesto p WHERE p.codPresupuesto = :codPresupuesto")
     , @NamedQuery(name = "Presupuesto.findByFecha", query = "SELECT p FROM Presupuesto p WHERE p.fecha = :fecha")
     , @NamedQuery(name = "Presupuesto.findByCodCliente", query = "SELECT p FROM Presupuesto p WHERE p.codCliente = :codCliente")    
+    , @NamedQuery(name = "Presupuesto.fingByFechas", query = "SELECT e FROM Events e WHERE t.eventsDate BETWEEN :fechaIni AND :fechaFin")          
     , @NamedQuery(name = "Presupuesto.findByEstado", query = "SELECT p FROM Presupuesto p WHERE p.estado = :estado")})
 public class Presupuesto implements Serializable {
 
