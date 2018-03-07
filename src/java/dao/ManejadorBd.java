@@ -5,7 +5,7 @@
  */
 package dao;
 
-import beans.cliente;
+import beans.Cliente;
 import java.sql.SQLException;
 import java.util.List;
 import javax.persistence.EntityExistsException;
