@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <link href="estilos.css" rel="stylesheet"/>
+
+    <script src="script.js"></script>
+
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Java 2018</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+
+
+                    <header class="header black-bg">
+
+                        <!--logo start-->
+                        <a href="index.html" class="logo">Proyecto DiPelo 2018  2018
+                            <img src="img/avatar.jpg" alt="avatar" id="avatar"/>
+                        </a>
+                        <!--logo end-->
+
+                        <a class="login" href="login.html">Salir</a>
+
+
+                    </header>
+                    <!--header end-->
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                    Proyecto DiPelo 2018 
+
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="175" header="Ocultar" collapsible="true" style="background-color: grey; color: white;">
+                    <p:menu style="background-color: grey; color: white;">
+                        <p:submenu label="Opciones">
+                            <p:menuitem value="Cliente" url="#"  class=""/>
+                            <p:menuitem value="Presupuesto" url="#" />
+                            <p:menuitem value="Factura" url="#" />
+                            <p:menuitem value="Concepto" url="#" />
+
+                        </p:submenu>
+
+                    </p:menu>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center" style="background-color: #F5DA81">
+                    <div class="cuerpoUsuario">
+                        <h2>Introduce login </h2>
+                        <br />
+                        <h:link outcome="welcomePrimefaces" value="Envia" />
+
+                        <h:form id="formularioUsuario">
+
+
+
+                                                <label>Introduce Usuario</label><br/>
+
+                                                <input type="txt" id="usuario"/><br/>
+
+                                                <label>Introduce password</label><br/>
+
+                                                <input type="password" id="password"/><br/>
+
+
+                                        <p:commandButton value="Enviar" id="envioUsuario"  actionListener="#{buttonView.buttonAction}" styleClass="ui-priority-primary" />
+
+                                    </h:form>
+                        </div>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+

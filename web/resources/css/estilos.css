@@ -1,0 +1,294 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 05-mar-2018, 20:43:23
+    Author     : eva
+*/
+
+
+body{
+    background-color: orange;
+}
+
+header{
+    background-color: orange;
+}
+a.logo{
+    color: white;
+}
+
+a{
+    text-decoration: none;
+}
+.formularioPresupuestos{
+    width: 400px;
+    margin: auto;
+    clear: both;
+}
+#fechas{
+    margin: 3em;
+}
+label{
+    text-align: left;
+}
+
+.thprincipal{
+    width: 60%;
+}
+.tablaPresupuesto{
+    width: 60%;
+}
+
+.login{
+    border: 1px solid orange;
+    float: right;
+    padding: 10px;
+    margin: 1em;
+    background-color: orange;
+    color:white;
+}
+
+.tablaPresupuestos{
+    width: 80%;
+    border: 2px solid orange;
+    margin: auto;
+    padding-top: 250px;
+    padding-bottom: 250px;
+    padding-left: 300px;    
+    width: 300px;
+}
+header{
+    background-color: orange;
+}
+header black-bg{
+    background-color: orange;
+}
+
+
+.logo{
+    float: left;
+    margin: 1em;
+}
+a{
+    text-decoration: none;
+}
+#formularioPresupuestos{
+    width: 400px;
+    margin: auto;
+    
+}
+input{
+    
+}
+label{
+    text-align: left;
+}
+#tablaPresupuestos{
+    width: 80%;
+    border: 2px solid orange;
+    margin: auto;
+    margin-top: 15px;
+    width: 300px;
+}
+
+.cuerpoUsuario{
+     width: 300px;
+    border: 3px solid orange;
+    background-color: orange;
+    padding: 2em;
+    margin: auto;
+    margin-top: 2em;
+}
+#formularioUsuario{
+     width: 250px;
+   background-color: orange;
+    padding: 2em;
+    margin: auto;
+}
+
+#tablaLogin{
+    width: 80%;
+    border: 3px solid orange;
+    margin: auto;
+    margin-top: 180px;
+    width: 400px;
+    height: 200px
+}
+.thprincipal{
+    width: 60%;
+}
+
+
+
+
+
+#searchform {
+
+    width: 280px;
+
+  height:30px;
+
+    padding: 8px;
+
+  margin:50px auto;
+
+    background: #ccc;
+
+    border-radius: 4px;
+
+    box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 2px 0 rgba(255,255,255,.5);
+
+}
+
+ 
+
+#searchform input {
+
+    width: 190px;
+
+  height:20px;
+
+    padding: 5px;
+
+    float: left;
+
+    border: 0;
+
+    background: #eee;
+
+    border-radius: 3px 0 0 3px;
+
+  box-shadow: 0 1px 1px rgba(0,0,0,.4) inset;
+
+}
+
+ 
+
+#searchform input:focus {
+
+    outline: 0;
+
+  height:21px;
+
+    background: #fff;
+
+    box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+
+}
+
+ 
+
+#searchform input:-webkit-input-placeholder {
+
+   color: #999;
+
+   font-weight: normal;
+
+   font-style: italic;
+
+}
+
+ 
+
+#searchform input:-moz-placeholder {
+
+    color: #999;
+
+    font-weight: normal;
+
+    font-style: italic;
+
+}
+
+ 
+
+#searchform input:-ms-input-placeholder {
+
+    color: #999;
+
+    font-weight: normal;
+
+    font-style: italic;
+
+}   
+
+ 
+
+#searchform button {
+
+    position: relative;
+
+    float: right;
+
+    border: 0;
+
+    cursor: pointer;
+
+    height: 30px;
+
+    width: 80px;
+
+    font-size:15px;
+
+    color: #fff;
+
+    background: #438cdb;
+
+    border-radius: 0 3px 3px 0;
+
+    text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+
+}  
+
+ 
+
+#searchform button:hover{
+
+    background: #2672e0;
+
+}
+
+ 
+
+#searchform button:active,
+
+#searchform button:focus{
+
+    background: #2672e0;
+
+}
+
+ 
+
+#searchform button:before { /* flecha */
+
+    content: '';
+
+    position: absolute;
+
+    border-width: 8px 8px 8px 0;
+
+    border-style: solid solid solid none;
+
+    border-color: transparent #438cdb transparent;
+
+    top: 8px;
+
+    left: -5px;
+
+}
+
+ 
+
+#searchform button:hover:before{
+
+    border-right-color: #2672e0;
+
+
+#searchform button:focus:before{
+    border-right-color: #2672e0;
+}
+}
