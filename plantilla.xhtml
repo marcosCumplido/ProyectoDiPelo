@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <title>Facelets Template</title>
+    </h:head>
+
+    <h:body>
+<p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true" class="">
+                    <p:lightBox styleClass="imagebox" id="lighbox1">  
+                        <h:outputLink value="../images/fondoencabezadotitulo.jpg" title="Nature 1">  
+                            <h:graphicImage name="/images/fondoencabezadotitulo.jpg" id="nature1" style=" height: 100px; width: 100%" />  
+                        </h:outputLink>
+
+                    </p:lightBox>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="100" closable="true" collapsible="true" style="background-color: #606057;">
+                    <p:lightBox styleClass="imagebox" >  
+                        <h:outputLink value="../images/fondopie.jpg" title="Nature 1">  
+                            <h:graphicImage name="/images/fondopie.jpg"  style=" height: 100px; width: 100%" />  
+                        </h:outputLink>
+
+                    </p:lightBox> 
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="220" header="Left" collapsible="true">
+                    
+                    <h:form>
+                    <p:graphicImage id="image" name="/images/logo.jpg" />    
+                        <p:panelMenu style="width:220px">
+                            <p:submenu label="Clientes">
+                                <p:menuitem value="Alta"  icon="ui-icon-disk" />
+                                <p:menuitem value="Mantenimeinto"   icon="ui-icon-arrowrefresh-1-w" />
+                            </p:submenu>
+                            <p:submenu label="Presupuestos">
+                                <p:menuitem value="Alta"  icon="ui-icon-disk" />
+                                <p:menuitem value="Mantenimeinto"   icon="ui-icon-arrowrefresh-1-w" />
+                            </p:submenu>
+                            <p:submenu label="Facturas">
+                                <p:menuitem value="Alta"  icon="ui-icon-disk" />
+                                <p:menuitem value="Mantenimeinto"   icon="ui-icon-arrowrefresh-1-w" />
+                            </p:submenu>
+                            <p:submenu label="Impuestos">
+                                <p:menuitem value="Alta"  icon="ui-icon-disk" />
+                                <p:menuitem value="Mantenimeinto"   icon="ui-icon-arrowrefresh-1-w" />
+                            </p:submenu>
+                            <p:submenu label="Conceptos">
+                                <p:menuitem value="Alta"  icon="ui-icon-disk" />
+                                <p:menuitem value="Mantenimeinto"   icon="ui-icon-arrowrefresh-1-w" />
+                            </p:submenu>
+                            
+                            <p:separator />
+                          </p:panelMenu>
+                    </h:form>
+                    
+
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <ui:insert name="content">Content</ui:insert>
+                </p:layoutUnit>
+
+            </p:layout>
+
+    </h:body>
+
+</html>

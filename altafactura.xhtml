@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <link href="estilos.css" rel="stylesheet"/>
+
+
+    <body>
+
+        <ui:composition template="./plantilla.xhtml">
+
+            <ui:define name="content">
+                <div>
+                    <div style="width:100%; height: 40px; color: #ed9d01; text-align: center;"  >
+                        <h2> Alta Factura </h2>                        
+                    </div>
+                    
+                    <p:fieldset legend="Cliente" styleClass="legenda">
+
+                                <h:panelGrid columns="5" cellpadding="5">
+                                     <h:outputLabel for="" value="Nº.Factura:"/>
+                                     <h:outputLabel for="" value="001234/2018" style='color: orange; '/>
+                                     
+                                     <h:outputLabel for="" value="" />
+                                     <h:outputLabel for="" value="" />
+                                     <h:outputLabel for="" value="" />
+                                     
+                                     <h:outputLabel for="" value="" />
+                                     <h:outputLabel for="" value="Nif" />
+                                     <p:inputText id="nif" placeholder="08032760x" />
+                                     
+                                     <h:outputLabel for="busqueda" value="Cliente:" />
+                                     <p:inputText id="cliente" placeholder="Ana Gomez" />
+                                     
+                                     <h:outputLabel for="" value="" />
+                                     <h:outputLabel for="" value="Dirección:" />
+                                     <p:inputText id="direccion" placeholder="c/ Pilar, 11 Las Ventas de Retamosa (Toledo)" />
+                                     
+                                     <h:outputLabel for="" value="Telefono:" />
+                                     <p:inputText id="telefono" placeholder="669421714" />
+                                     
+                                     <h:outputLabel for="" value="" />
+                                     <h:outputLabel for="" value="Email" />
+                                     <p:inputText id="email" placeholder="ana@annex.es" />
+                                     
+                                     <h:outputLabel for="" value="" />
+                                     <h:outputLabel for="" value="" />
+                                </h:panelGrid>
+
+                                
+                    </p:fieldset>
+                    <p:panel id="panelBusqueda" header="Conceptos" style="margin-bottom:20px">
+
+
+                        <h:form>
+                            <p:fieldset >
+                                <h:panelGrid columns="6" cellpadding="5">
+                                    <h:outputLabel for="" value="Cantidad:" />
+                                     <p:inputText id="cantidad" placeholder="" />
+                                     
+                                    <h:outputLabel for="" value="Concepto:" />
+                                     <p:inputText id="descripcion" placeholder="Descripcion" />
+                                     
+                                     <h:outputLabel for="busqueda" value="Importe:" />
+                                     <p:inputText id="importe" placeholder="00.00" />
+                                     
+                                     <h:outputLabel for="" value="Descuento:" />
+                                     <p:inputText id="descuento" placeholder="" />
+                                     
+                                     <h:outputLabel for="" value="Impuesto:" />
+                                     <p:inputText id="impuesto" placeholder="" />
+                                     
+                                     <h:outputLabel for="" value="Email" />
+                                     <p:inputText id="email" placeholder="ana@annex.es" />
+                                     
+                                     
+                                
+                                     <h:commandButton value="Insertar Concepto" id="insertar"  actionListener="#{bean.buscar}" styleClass="ui-priority-primary"/>
+
+                                </h:panelGrid>
+                            </p:fieldset>
+                        </h:form>
+
+                    </p:panel>
+
+                    <p:panel id="panelTabla" header="Detalle" style="margin-bottom:20px">
+                        <h:panelGrid columns="2" cellpadding="10">
+                            <h:form>
+                            <p:dataTable var="car" value="#{dtBasicView.cars}">
+                                <p:column headerText="Cantidad" styleClass="tablaPresupuesto" style="width: 5%">
+                                    <h:outputText value="#{car.id}" />
+                                </p:column>
+                                <p:column headerText="Concepto" styleClass="tablaPresupuesto" style="width: 20%">
+                                    <h:outputText value="#{car.id}" />
+                                </p:column>
+                                <p:column headerText="Importe" styleClass="tablaPresupuesto" style="width: 8%">
+                                    <h:outputText value="#{car.id}" />
+                                </p:column>
+                                <p:column headerText="Descuento" styleClass="tablaPresupuesto" style="width: 5%">
+                                    <h:outputText value="#{car.id}" />
+                                </p:column>
+                                <p:column headerText="Impuesto" styleClass="tablaPresupuesto" style="width: 5%">
+                                    <h:outputText value="#{car.id}" />
+                                </p:column>
+                                <p:column headerText="Total" styleClass="tablaPresupuesto" style="width: 10%">
+                                    <h:outputText value="#{car.id}" />
+                                </p:column>
+                                <p:column headerText="M" styleClass="tablaPresupuesto" style="width: 1%">
+                                    <h:outputText value="#{car.id}" />
+                                </p:column>
+                                <p:column headerText="D" styleClass="tablaPresupuesto" style="width: 1%">
+                                    <h:outputText value="#{car.id}" />
+                                </p:column>
+
+                            </p:dataTable>   
+                                <h:commandButton value="Guardar Factura" id="insertar"  actionListener="#{bean.buscar}" styleClass="ui-priority-primary"/>
+                             </h:form>
+                        </h:panelGrid>
+                    </p:panel>
+
+                </div>
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+    
+</html>
