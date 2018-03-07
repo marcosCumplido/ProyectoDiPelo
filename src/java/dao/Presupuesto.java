@@ -56,7 +56,7 @@ public class Presupuesto implements Serializable {
     private Cliente codCliente;
     @JoinColumn(name = "CodFactura", referencedColumnName = "CodCliente")
     @ManyToOne
-    private Factura codFactura;
+    private Facturas codFactura;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "presupuesto1")
     private Presupuesto presupuesto;
     @JoinColumn(name = "CodPresupuesto", referencedColumnName = "CodPresupuesto", insertable = false, updatable = false)
@@ -108,11 +108,11 @@ public class Presupuesto implements Serializable {
         this.codCliente = codCliente;
     }
 
-    public Factura getCodFactura() {
+    public Facturas getCodFactura() {
         return codFactura;
     }
 
-    public void setCodFactura(Factura codFactura) {
+    public void setCodFactura(Facturas codFactura) {
         this.codFactura = codFactura;
     }
 

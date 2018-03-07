@@ -38,7 +38,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Factura.findByFecha", query = "SELECT f FROM Factura f WHERE f.fecha = :fecha")
     , @NamedQuery(name = "Factura.findByEstado", query = "SELECT f FROM Factura f WHERE f.estado = :estado")
     , @NamedQuery(name = "Factura.findByCodFactura", query = "SELECT f FROM Factura f WHERE f.codFactura = :codFactura")})
-public class Factura implements Serializable {
+public class Facturas implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)
@@ -67,14 +67,14 @@ public class Factura implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "facturaCodFactura")
     private List<Detalle> detalleList;
 
-    public Factura() {
+    public Facturas() {
     }
 
-    public Factura(String codFactura) {
+    public Facturas(String codFactura) {
         this.codFactura = codFactura;
     }
 
-    public Factura(String codFactura, Date fecha, String observaciones, String estado) {
+    public Facturas(String codFactura, Date fecha, String observaciones, String estado) {
         this.codFactura = codFactura;
         this.fecha = fecha;
         this.observaciones = observaciones;
@@ -149,10 +149,10 @@ public class Factura implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Factura)) {
+        if (!(object instanceof Facturas)) {
             return false;
         }
-        Factura other = (Factura) object;
+        Facturas other = (Facturas) object;
         if ((this.codFactura == null && other.codFactura != null) || (this.codFactura != null && !this.codFactura.equals(other.codFactura))) {
             return false;
         }

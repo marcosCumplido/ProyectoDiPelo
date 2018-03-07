@@ -77,7 +77,7 @@ public class Detalle implements Serializable {
     private Albaran albaranCodAlbaran;
     @JoinColumn(name = "factura_CodFactura", referencedColumnName = "CodFactura")
     @ManyToOne(optional = false)
-    private Factura facturaCodFactura;
+    private Facturas facturaCodFactura;
 
     public Detalle() {
     }
@@ -178,11 +178,11 @@ public class Detalle implements Serializable {
         this.albaranCodAlbaran = albaranCodAlbaran;
     }
 
-    public Factura getFacturaCodFactura() {
+    public Facturas getFacturaCodFactura() {
         return facturaCodFactura;
     }
 
-    public void setFacturaCodFactura(Factura facturaCodFactura) {
+    public void setFacturaCodFactura(Facturas facturaCodFactura) {
         this.facturaCodFactura = facturaCodFactura;
     }
 

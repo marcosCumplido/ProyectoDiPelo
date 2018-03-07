@@ -93,7 +93,7 @@ public class Cliente implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "codCliente")
     private List<Presupuesto> presupuestoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "codCliente")
-    private List<Factura> facturaList;
+    private List<Facturas> facturaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "codCliente")
     private List<Albaran> albaranList;
 
@@ -223,11 +223,11 @@ public class Cliente implements Serializable {
     }
 
     @XmlTransient
-    public List<Factura> getFacturaList() {
+    public List<Facturas> getFacturaList() {
         return facturaList;
     }
 
-    public void setFacturaList(List<Factura> facturaList) {
+    public void setFacturaList(List<Facturas> facturaList) {
         this.facturaList = facturaList;
     }
 
