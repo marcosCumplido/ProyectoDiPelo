@@ -359,7 +359,6 @@ public class ManejadorBd {
         }
         return listadoFacturas;
     }   
-    
-    
+       
 //final     
 }
