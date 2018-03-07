@@ -66,7 +66,7 @@ public class ManejadorBd {
        return false;
                     
 }  
-          
+       //   
 
     public int grabarCliente(Cliente c) {
 //        try {
