@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <title>Alta de Concepto</title>
+    </h:head>
+    
+    <h:body>            
+        <div id="top" class="top">
+            <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true" class="">
+                <p:lightBox styleClass="imagebox" id="lighbox1">  
+                    <h:outputLink value="../images/fondoencabezadotitulo.jpg" title="Nature 1">  
+                        <h:graphicImage name="/images/fondoencabezadotitulo.jpg" id="nature1" style=" height: 100px; width: 100%" />  
+                    </h:outputLink>
+
+                </p:lightBox>
+            </p:layoutUnit>
+        </div>
+
+        <div id="content" class="center_content_login" >
+
+            <ui:insert name="content">
+        <h:outputText value="Pagina de alta concepto" />
+        <br/><br/>
+        <h:form>
+            <h:panelGrid columns="2">
+                
+                
+                
+                <h:outputLabel for="descripcion" value="Añadir descripción del concepto: "/>
+                <h:inputText id="descripcion" value="#{conceptos.descripcion}" required="true"
+                             requiredMessage="Debe completar el campo"/>
+                <h:message for="descripcion" style="color:red"/>
+                <br/><br/>
+                
+                <h:outputLabel for="importe" value="Añadir importe del concepto: "/>
+                <h:inputText id="importe" value="#{conceptos.importe}" required="true"
+                             requiredMessage="Debe completar el campo"/>
+                <h:message for="importe" style="color:red"/>
+                <br/><br/>
+                
+                <h:outputLabel for="descuento" value="Añadir descuento del concepto: "/>
+                <h:inputText id="descuento" value="#{conceptos.descuento}" required="false"
+                             requiredMessage="Debe completar el campo"/>
+                <h:message for="descuento" style="color:red"/>
+                <br/><br/>
+                
+                <h:outputLabel for="estado" value="Añadir estado del concepto: "/>
+                <h:inputText id="estado" value="#{conceptos.estado}" required="true"
+                             requiredMessage="Debe completar el campo"/>
+                <h:message for="estado" style="color:red"/>
+                <br/><br/>
+                
+                <h:outputLabel for="codIva" value="Seleccione codigo de iva: " />
+                <h:selectOneMenu id="codIva" value="#{conceptos.codIva}">
+                    <f:selectItems value="#{conceptos.listadoCodIva}" var="codIva"
+                                   itemLabel="#{codIva.codIva} ,#{codIva.descripcion}"
+                                   itemValue="#{codIva.codIva}"/>
+                </h:selectOneMenu>
+                <h:message for="codIva" style="color:red"/>
+                <br/>
+                
+                <h:outputLabel value=" " />
+                
+                <h:commandButton value="Guardar"
+                                 action="#{conceptos.guardarConcepto()}"/>
+            </h:panelGrid>
+        </h:form>
+         </ui:insert>
+        </div>        
+    </h:body>
+</html>
+
