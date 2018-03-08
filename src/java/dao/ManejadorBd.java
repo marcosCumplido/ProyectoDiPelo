@@ -60,15 +60,17 @@ public class ManejadorBd {
            
        try {
        Usuarios u;
-       Query q = null;
-       q = em.createNamedQuery("Usuarios.findByUsuario"); 
-       u=(Usuarios) q.getSingleResult();
+       //Query q = null;
+        Query q = em.createNamedQuery("Usuarios.findByUsuario"); 
+        q.setParameter("usuario", user);
+        u=(Usuarios) q.getSingleResult();
+        
         if (u.getPaswword().equals(password)){
             
 //            if(u.getEstado().equals("A"))
 //            return true;
             
-        return false;
+        return true;
         }        
     } catch (Exception ex) {
         return false;
@@ -77,6 +79,7 @@ public class ManejadorBd {
        return false;
                     
 }  
+
 //Valida-Usuario Fin
     
 //Cliente-Ini Alta - Buscar -Actualizar - Baja     
