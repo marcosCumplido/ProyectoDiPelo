@@ -5,73 +5,90 @@
  */
 package beans;
 
+import dao.ManejadorBd;
 import java.awt.event.ActionEvent;
 import java.io.Serializable;
-import javax.inject.Named;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 import org.primefaces.context.RequestContext;
 
 /**
  *
- * @author Alumno
+ * @author Maria Jose
  */
 @Named(value = "usuarios")
 @RequestScoped
 public class Usuarios implements Serializable{
 
-    private String usuario;
-    private String password;
-    private boolean logeado=false;
-            
-    
+   private String usuario;
+   private String paswword;
+   private String estado = "a";
+ 
    
-    public boolean estaLogeado() {
-    return logeado;
-    } 
-    public String getUsuario() {
-    return usuario;
+   
+   public Usuarios() {
     }
-    public void setUsuario(String usuario) {
-    this.usuario = usuario;
-    } 
-    public String getPassword() {
-    return password;
-    }
-    public void setPassword(String password) {
-    this.password = password;
-    }
-//    public void login(ActionEvent actionEvent) {
-//        RequestContext context = RequestContext.getCurrentInstance();
-//        FacesMessage msg = null;
-//        if (usuario != null && usuario.equals("admin") && password != null
-//        && password.equals("admin")) {
-//        logeado = true;
-//        msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenid@", usuario);
-//        } else {
-//        logeado = false;
-//        msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Error",
-//        "Credenciales no válidas");
-//        }
-//        FacesContext.getCurrentInstance().addMessage(null, msg);
-//        context.addCallbackParam("estaLogeado", logeado);
-//        if (logeado){
-//        context.addCallbackParam("view", "index.xhtml");
-//        } 
-//    }
-//    public void logout() {
-//    HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
-//    .getExternalContext().getSession(false);
-//    session.invalidate();
-//    logeado = false;
-//    } 
 
-//    public String existeUsuario(){
-//        ManejadorBd mn= new ManejadorBd();
-//        int resultado= mn.guardar(Cliente.class, this);//hacemos un guardar generico
-//        return""; //asi se llama a si mismo
-//    }    
-    
+    public Usuarios(String usuario, String paswword) {
+        this.usuario = usuario;
+        this.paswword = paswword;
+    }
+
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getPaswword() {
+        return paswword;
+    }
+
+    public void setPaswword(String paswword) {
+        this.paswword = paswword;
+    }
+   
+
+   public String login(){
+        ManejadorBd mn= new ManejadorBd();
+        boolean validado= false;
+       try {
+           validado=mn.validar(usuario, paswword);
+          
+           if (validado){
+               return "success";
+           }else{
+               return "fail";
+           }
+//        if(usuario.equals("admin") && password.equals("admin")){
+//	
+//			return "success";
+//		}
+//		else{
+//			return "fail";
+//		}
+//	}
+       } catch (SQLException ex) {
+           Logger.getLogger(Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       return "fail";
+    }
 }
