@@ -10,20 +10,23 @@
     <ui:define name="content">
         
         <div class="cuerpoUsuario" align="center">
-            <div style="width:300px; height: 300px; background-color: #ed9d01; padding-top: 10px; margin-top: 150px" >
+            <div style="width:300px; height: 300px; background-color: #ed9d01; padding-top: 10px; margin-top: 50px" >
                  
             <h2>Area de Acceso</h2>
             <br />
 
                     <h:form id="formularioUsuario">
-                            <label>Usuario</label><br/>
-
-                            <input type="txt" id="usuario"/><br/><br/>
-
-                            <label>Password</label><br/>
-
-                            <input type="password" id="password"/><br/><br/>
-                            <p:commandButton value="Enviar" id="envioUsuario"  actionListener="#{usuario.validar}" styleClass="ui-priority-primary" />
+                            <h:outputLabel for="username" value="Usuario:" /> <br />
+                                
+                                <h:inputText value="#{usuarios.usuario}" id="username" required="true" label="username" /><br />
+                           
+                                <h:outputLabel for="password" value="Clave:" /> <br />
+                               
+                                <p:password value="#{usuarios.paswword}" id="password" required="true" label="password" /><br />
+                          
+                        
+                        <h:commandButton id="loginButton" value="Login" action="#{usuarios.login}"/>
+                       
 
                         </h:form>
             </div>
